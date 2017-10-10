@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	</title>
+</head>
+<body>
+		
+	<button>按钮</button>
+	<script>
+
+		var btn = document.querySelector('button');
+
+		// btn.addEventListener('click', function () {
+		// 	for(var i=0; i<1000000000; i++) {
+		// 		// 执行一些逻辑
+		// 	}			
+		// })
+
+		setTimeout(function () {
+			for(var i=0; i<1000000000; i++) {
+				// 执行一些逻辑
+			}	
+		}, 100000);
+
+		console.log('我什么时候才可以被执行？');
+	</script>
+</body>
+</html>

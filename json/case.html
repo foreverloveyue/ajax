@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>使用 json 来处理数据</title>
+	<style>
+		table {
+			width: 600px;
+			border-collapse: collapse;
+			border: 1px solid #CCC;
+		}
+
+		td {
+			height: 30px;
+			border: 1px solid #CCC;
+		}
+	</style>
+</head>
+<body>
+	<button>获取</button>
+	<table>
+		<thead>
+			<tr>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>性别</td>
+				<td>专辑</td>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	<script>
+		// 通过点击一个按钮，发送一个请求，来获取服务端的数据
+		// 然后通过表格进行展示
+		var btn = document.querySelector('button');
+
+		btn.onclick = function () {
+			var xhr = new XMLHttpRequest;
+
+			xhr.open('get', './case.php');
+
+			xhr.send();
+
+			xhr.onreadystatechange = function () {
+				if(xhr.readyState == 4 && xhr.status == 200) {
+					// console.log(xhr.responseText);
+					// 通过 JSON.parse 再将 json 格式的字符串
+					// 转成 javascript 的数组或对象
+					var stars = JSON.parse(xhr.responseText);
+
+					// console.log(stars);
+					var html = '';
+					for(var i=0; i<stars.length; i++) {
+
+						html += '<tr>';
+						html += '<td>' + stars[i].name + '</td>',
+						html += '<td>' + stars[i].age + '</td>',
+						html += '<td>' + stars[i].gender + '</td>',
+						html += '<td>' + stars[i].ablum + '</td>',
+						html += '</tr>';
+					}
+
+					document.querySelector('tbody').innerHTML = html;
+				}
+			}
+		}
+	</script>
+</body>
+</html>

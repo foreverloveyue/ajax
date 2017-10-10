@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		table {
+			width: 600px;
+			border-collapse: collapse;
+			border: 1px solid #CCC;
+		}
+
+		td {
+			height: 30px;
+			border: 1px solid #CCC;
+		}
+	</style>
+</head>
+<body>
+	<button>按钮</button>
+	<table>
+		<thead>
+			<tr>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>性别</td>
+				<td>专辑</td>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	<script>
+		// 通过点击某个按钮来获取，服务端的数据
+		// 并且数据是一个列表，然后将数据以表格形式展示
+
+		var btn = document.querySelector('button');
+
+		btn.addEventListener('click', function () {
+			var xhr = new XMLHttpRequest;
+
+			xhr.open('get', './xml-3.xml');
+			// xhr.open('get', './data.php');
+
+			xhr.send();
+
+			xhr.addEventListener('readystatechange', function () {
+				if(xhr.readyState == 4 && xhr.status == 200) {
+					// console.log(typeof xhr.responseText);
+					// 如果服务端返回的数据为 xml
+					// 则需要使用 xhr.responseXML 进行获取
+					console.log(xhr.responseXML);
+					// 通过 responseXML 获得到的是一个 DOM
+					// 需要能过 DOM 操作的方法，将数据从DOM结构
+					// 中取出
+
+					var xmlDoc = xhr.responseXML;
+
+					// 获得所有 item 标签 元素
+					var items = xmlDoc.getElementsByTagName('item');
+					var html = '';
+					for(var i=0; i<items.length; i++) {
+						var name = items[i].getElementsByTagName('name')[0].innerHTML;
+						var age = items[i].getElementsByTagName('age')[0].innerHTML;
+						var gender = items[i].getElementsByTagName('gender')[0].innerHTML;
+						var ablum = items[i].getElementsByTagName('ablum')[0].innerHTML;
+
+						html += '<tr>';
+						html += '<td>' + name + '</td>';
+						html += '<td>' + age + '</td>';
+						html += '<td>' + gender + '</td>';
+						html += '<td>' + ablum + '</td>';
+						html += '</tr>';
+						console.log(name, age, gender, ablum);
+					}
+
+					// console.log(html)
+					document.querySelector('tbody').innerHTML = html;
+				}
+			})
+		})
+	</script>
+</body>
+</html>

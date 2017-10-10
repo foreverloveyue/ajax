@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<item>
+		<name>刘德华</name>
+		<age>58</age>
+		<gender>男</gender>
+		<ablum>&lt;&lt;一起走过的日子&gt;&gt;</ablum>
+	</item>
+	<item>
+		<name>梁朝伟</name>
+		<age>54</age>
+		<gender>男</gender>
+		<ablum>&lt;&lt;无间道&gt;&gt;</ablum>
+	</item>
+	<item>
+		<name>孙燕姿</name>
+		<age>42</age>
+		<gender>女</gender>
+		<ablum>&lt;&lt;绿光&gt;&gt;</ablum>
+	</item>
+	<item>
+		<name>吴彦祖</name>
+		<age>18</age>
+		<gender>男</gender>
+		<ablum>&lt;&lt;好听歌&gt;&gt;</ablum>
+	</item>
+</items>

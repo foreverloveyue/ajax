@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1>我们正在学习使用 XMLHttpRequest</h1>
+	<p>将来这里的内容会被服务端数据替换</p>
+	<button>按钮</button>
+	<script>
+
+		var btn = document.querySelector('button');
+
+		btn.addEventListener('click', function () {
+
+			var xhr = new XMLHttpRequest;
+
+			xhr.open('get', './example.php');
+
+			xhr.send();
+
+			xhr.addEventListener('readystatechange', function () {
+				if(xhr.readyState == 4) {
+					console.log(xhr.responseText);
+
+					document.querySelector('p').innerHTML = xhr.responseText;
+				}
+			})	
+		})
+
+	</script>
+</body>
+</html>

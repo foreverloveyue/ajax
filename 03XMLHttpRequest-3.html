@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>XMLHttpRequest</title>
+	<style>
+		.result {
+			color: red;
+		}
+	</style>
+</head>
+<body>
+	<h1>使用 XMLHttpRequest 可以发起请求，并处理响应结果</h1>
+	<h1>通过前面的学习发现请求时可以携带一些参数</h1>
+	<h1>携带的参数根据请求方式的不同，传递方式也一些差异</h1>
+
+	<h1>如果以 get 方式发起请求时，携带的参数位于请求地址的后面</h1>
+	<h1>其格式为 url?key1=val1&key2=val2...，并且请求主体为空</h1>
+	<h1>如果说以 post 方式发起请求时，携带的参数通过请求主体来发送</h1>
+	<h1>其格式默认为 key=val&key1=val1&key2=val2...</h1>
+
+	<h1 class="result"></h1>
+
+	<script>
+		var xhr = new XMLHttpRequest;
+
+		xhr.open('get', './get.php?name=小明&age=16');
+
+		xhr.send();
+
+		xhr.onreadystatechange = function () {
+			if(xhr.readyState == 4) {
+				document.querySelector('.result').innerHTML = xhr.responseText;
+			}
+		}
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>获得服务端复杂数据</title>
+</head>
+<body>
+	<button>请求</button>
+	<script>
+
+		var btn = document.querySelector('button');
+		var obj = {
+			name: '小红',
+			age: 16
+		}
+
+		btn.onclick = function () {
+			var xhr = new XMLHttpRequest;
+
+			// JSON 是一个内建的对象，可以将javascript 的数组或
+			// 对象转成一个特定格式的字符（json）
+			console.log(JSON.stringify(obj));
+			xhr.open('get', './demo.php?test=' + JSON.stringify(obj));
+
+			xhr.send();
+
+			xhr.onreadystatechange = function () {
+				if(xhr.readyState == 4 && xhr.status == 200) {
+					// 接收到了一个特定格式的字符串（媒介）
+					// javascript 提供了专门的方法可以将
+					// 这个特定格式的字符串转成 javascript 
+					// 的数据或对象
+					console.log(xhr.responseText);
+
+					// JSON 是 javascript 内置的对象，用来解析
+					// 特定格式的字符串
+					console.log(JSON.parse(xhr.responseText));
+				}
+			}
+		}
+	</script>
+</body>
+</html>

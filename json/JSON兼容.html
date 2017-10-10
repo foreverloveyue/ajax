@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<!-- 使用 json2.js 可以解决 JSON 在IE低版本的 -->
+	<!-- 兼容情问题，引入它以后可以正常的使用 JSON.parse和JSON.stringify -->
+
+	<!-- 有条件的引入引此类库，只为 IE 低版本引入 -->
+
+	<!--[if lte IE 7]>
+		<style>
+			body {
+				background-color: pink;
+			}
+		</style>
+		<script>alert(10)</script>
+
+		<script src="./json2.js"></script>
+	<![endif]-->
+
+</head>
+<body>
+	<h1>使用 JSON 内建对象可以解析 json 格式的字符串</h1>
+	<h1>但是在 IE 低版本（IE7）中没有 JSON 这个内对象，所以存在兼容性</h1>
+
+	<h2>在IE低版本下，也不存在 console 这个对象</h2>
+	<script>
+		var arr = ['a', 'b', 'c'];
+
+		// console.log(JSON.stringify(arr));
+
+		// alert(JSON.stringify(arr));
+
+		// 通过 eval 可以将字符串按着 javascript 的语法进行解析
+
+		var str = 'alert(1)';
+
+		var json = '{"name": "小明", "age": 16}';
+
+		eval('(' + str + ')');
+
+		eval('(' + json + ')');
+	</script>
+</body>
+</html>
